@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+<meta charset="UTF-8">
+<title>Will You Be My Valentine? 💕😍</title>
+
+<!-- Google Fonts: Quicksand -->
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* Body and background */
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #ffb3c6, #ffcce6);
+    font-family: 'Quicksand', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Card container */
+.card {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 40px;
+    border-radius: 30px;
+    width: 380px;
+    text-align: center;
+    box-shadow: 0 15px 35px rgba(255,0,100,0.3);
+    animation: fadeIn 1s ease;
+    backdrop-filter: blur(5px);
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Header */
+h1 {
+    color: #ff3366;
+    font-size: 36px;
+    text-shadow: 1px 1px 5px rgba(255,0,100,0.5);
+}
+
+/* Paragraph */
+p {
+    color: #cc0052;
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+/* Buttons */
+button {
+    padding: 12px 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    margin-top: 20px;
+    background: #ff4d6d;
+    color: white;
+    box-shadow: 0 8px 20px rgba(255,0,100,0.3);
+    transition: all 0.4s ease;
+}
+
+button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 12px 30px rgba(255,0,100,0.5);
+}
+
+/* No button */
+.no {
+    position: absolute;
+    background: #ddd;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+
+/* Love section */
+#loveSection {
+    display: none;
+    margin-top: 25px;
+    transition: all 0.5s ease;
+    opacity: 0;
+}
+#loveSection.show {
+    opacity: 1;
+}
+
+/* Final I Love You screen */
+#finalLove {
+    position: fixed;
+    inset: 0;
+    background: rgba(255, 77, 109, 0.95);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    text-align: center;
+    z-index: 10;
+}
+
+#finalLove h2 {
+    font-size: 48px;
+    animation: pulse 1.5s infinite;
+    text-shadow: 2px 2px 15px rgba(255,255,255,0.6);
+}
+
+#finalLove p {
+    font-size: 20px;
+    max-width: 80%;
+    line-height: 1.7;
+}
+
+/* Pulse animation */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+/* Floating hearts */
+.heart {
+    position: fixed;
+    color: white;
+    font-size: 24px;
+    animation: float 6s linear infinite;
+    opacity: 0.8;
+    filter: drop-shadow(0 0 5px white);
+}
+
+@keyframes float {
+    from { transform: translateY(100vh); }
+    to { transform: translateY(-10vh); }
+}
+
+/* Gallery */
+.gallery {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.gallery img {
+    width: 100px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(255,0,100,0.3);
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+.gallery img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 12px 30px rgba(255,0,100,0.6);
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <h1>Will you be my Valentine? 💕</h1>
+
+    <button onclick="showLove()">Yes 😛</button>
+    <button class="no" id="noBtn" onmouseover="moveNo()">No 🙈</button>
+
+    <div id="loveSection">
+        <p>
+            Meri pyari Nanu 😍<br><br>
+            Timro sath ma huda sabai ramro lagcha <br>
+            Timi nai mero Sanu ho 💕<br><br>
+            Sadhai timro sath ma huna pau 😛<br><br>
+            Timilai sadhai maya garna chahanchu 😘
+        </p>
+
+        <!-- Optional gallery: replace with her photos -->
+        <div class="gallery">
+            <!-- Example: <img src="photo1.jpg" alt="Her photo"> -->
+        </div>
+
+        <button onclick="finalLove()">I Love You 😍💕</button>
+    </div>
+</div>
+
+<!-- Final I Love You Screen -->
+<div id="finalLove">
+    <h2>😛 I LOVE YOU 💕</h2>
+    <p>
+        Nanu 💕<br>
+        Sadhai timi nai ❤️😛
+    </p>
+</div>
+
+<script>
+function showLove() {
+    const section = document.getElementById("loveSection");
+    section.style.display = "block";
+    setTimeout(() => section.classList.add("show"), 50); // smooth fade-in
+}
+
+function finalLove() {
+    document.getElementById("finalLove").style.display = "flex";
+}
+
+function moveNo() {
+    const btn = document.getElementById("noBtn");
+    btn.style.top = Math.random() * 80 + "vh";
+    btn.style.left = Math.random() * 80 + "vw";
+}
+
+// Floating hearts animation
+setInterval(() => {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = Math.random() * 25 + 15 + "px";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 6000);
+}, 400);
+</script>
+
+</body>
+</html>
